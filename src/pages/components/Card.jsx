@@ -1,13 +1,20 @@
 const Card = (props) => {
   console.log(props);
   let data = props.data;
-  console.log(data);
-  let date = data.published_at;
+  // console.log(data);
+  let date =data.published_at.toLocaleString() ;
   return (
-    <div className="w-1/3 p-[16px] border-2 border-solid border-gray-100 flex justify-center flex-col  gap-3 text-left">
-      <img className="rounded-xl w-full" src={data.social_image} alt="" />
-      <p>{data.tags}</p>
-      <p>{data.title}</p>
+    <div className="w-1/3 p-[16px] border-2 border-solid border-gray-100 flex justify-center flex-col  gap-3 text-left rounded-xl">
+      <img
+        className="rounded-xl w-[360px] h-[200px]"
+        src={data.social_image}
+        alt=""
+      />
+      <div className="bg-[#4B6BFB0D] px-[10px] py-[4px] w-fit">
+        <p className="text-[#4B6BFB]">{data.tags}</p>
+      </div>
+
+      <p className="text-[#181A2A] font-semibold text-[24px] ">{data.title}</p>
       <p>{date}</p>
     </div>
   );
