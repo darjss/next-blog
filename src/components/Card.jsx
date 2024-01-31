@@ -4,7 +4,7 @@ const Card = (props) => {
   // console.log(data);
   let date =data.published_at.toLocaleString() ;
   return (
-    <div className="w-1/3 p-[16px] border-2 border-solid border-gray-100 flex justify-center flex-col  gap-3 text-left rounded-xl">
+    <div className="w-[32%] p-[16px] border-2 border-solid border-gray-100 flex justify-center flex-col  gap-3 text-left rounded-xl">
       <img
         className="rounded-xl w-[360px] h-[200px]"
         src={data.social_image}
