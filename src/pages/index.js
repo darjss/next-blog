@@ -1,11 +1,14 @@
 import Card from "../components/Card";
 import TrendingCard from "../components/TrendingCard";
-import Header from "../components/Header";
 import Hlcard from "../components/Hlcard";
 export default function Home({ data, trending }) {
   return (
     <div className="w-[1200px] flex flex-col m-auto justify-center items-center gap-10">
-      <Hlcard data={data[5]} />
+      <div className="carousel w-full h-[100px]">
+        {trending.map((a, i) => {
+          <Hlcard data={a} key={i} index={i} />;
+        })}
+      </div>
       <div className="flex">
         {trending.map((a, i) => {
           return <TrendingCard data={a} key={i} />;
