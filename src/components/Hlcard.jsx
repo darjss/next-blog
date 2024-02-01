@@ -9,9 +9,10 @@ const Hlcard = ({ data, index }) => {
         <p className="text-4xl font-semibold">{data.title}</p>
         <p>{data.published_at}</p>
       </div>
-{/*   
-        <a href={`#img${index - 1}`}>left</a>
-        <a href={`#img${index + 1}`}>right</a> */}
+
+      <a href={`#img${index - 1}`}>left</a>
+      <a href={`#img${index + 1}`}>right</a>
+      
     </div>
   );
 };

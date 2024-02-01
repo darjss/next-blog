@@ -14,7 +14,7 @@ const Footer = () => {
           <p>Email: info@jstemplate.com</p>
           <p>Phone: 880 123 456 789</p>
         </div>
-        <div>
+        <div className="flex gap-3 flex-col">
           <p>Home</p>
           <p>Blog</p>
           <p>Contact</p>

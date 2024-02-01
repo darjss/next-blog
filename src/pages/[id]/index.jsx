@@ -1,4 +1,4 @@
-import parse from "html-react-parser"
+import parse from "html-react-parser";
 const Page = ({ news }) => {
   console.log(news);
   return (
@@ -6,10 +6,10 @@ const Page = ({ news }) => {
       <p>{news.title}</p>
       <div className="flex">
         <img src={news.user.profile_image_90} alt="" />
-        <p>{ news.user.name}</p>
+        <p>{news.user.name}</p>
       </div>
       <img src={news.social_image} alt="" />
-      <p>{parse(news.body_html) }</p>
+      <p>{parse(news.body_html)}</p>
     </div>
   );
 };

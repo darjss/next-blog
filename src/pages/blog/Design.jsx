@@ -2,7 +2,7 @@ import Card from "@/components/Card";
 import NavBar from "@/components/NavBar";
 const Page = ({ data }) => {
   return (
-    <div>
+    <div className="w-[1200px]">
       <p className="py-12 text-2xl font-bold">All Blog Post</p>
       <NavBar />
       <div className="flex flex-wrap">
