@@ -1,9 +1,15 @@
-import { useRouter } from "next/router";
-const Page = ({news}) => {
+import parse from "html-react-parser"
+const Page = ({ news }) => {
+  console.log(news);
   return (
-    <div>
+    <div className="w-[1200px] m-auto">
       <p>{news.title}</p>
-    <img src={news.social_image} alt="" />
+      <div className="flex">
+        <img src={news.user.profile_image_90} alt="" />
+        <p>{ news.user.name}</p>
+      </div>
+      <img src={news.social_image} alt="" />
+      <p>{parse(news.body_html) }</p>
     </div>
   );
 };
