@@ -1,4 +1,5 @@
 import Logo from "./Logo";
+import Socialicons from "./Socialicons";
 const Footer = () => {
   return (
     <div className="w-full h-[495px] bg-[#F6F6F7]">
@@ -26,8 +27,7 @@ const Footer = () => {
                   <p>Terms of Use</p>
                   <p>Privacy Policy</p>
                   <p>Cookie Policy</p>
-                  
-              </div>
+        </div>
       </div>
     </div>
   );
