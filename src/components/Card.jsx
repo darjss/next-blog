@@ -3,7 +3,7 @@ const Card = (props) => {
   console.log(props);
   let data = props.data;
   // console.log(data);
-  let date =data.published_at.toLocaleString() ;
+  let date =data.published_at;
   return (
     <div className="w-[32%] p-[16px] border-2 border-solid border-gray-100 flex justify-center flex-col  gap-3 text-left rounded-xl">
       <Link href={`/${data.id}`}>

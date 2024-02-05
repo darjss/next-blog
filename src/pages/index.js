@@ -1,16 +1,31 @@
 import Card from "../components/Card";
 import TrendingCard from "../components/TrendingCard";
 import Hlcard from "../components/Hlcard";
-import { useState } from "react";
-export default function Home({ data, trending }) {
-  const [articles, setArticles] = useState(data);
+import { useState, useEffect } from "react";
+export default function Home() {
+  const [articles, setArticles] = useState([]);
   const [pageNum, setPageNum] = useState(4);
+  const [trending, setTrending] = useState([]);
   const loadMoreHandler = async () => {
     const response = await fetch(
       `https://dev.to/api/articles?per_page=3&page=${pageNum}`
-    ).then((response)=>response.json());
+    ).then((response) => response.json());
     setPageNum(pageNum + 1);
-    setArticles([...articles , ...response])
+    setArticles([...articles, ...response]);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const res = await fetch("http://localhost:4000/api/blog").then((response) =>
+      response.json()
+    );
+    const data = await fetch("http://localhost:4000/api/trending").then(
+      (response) => response.json()
+    );
+    console.log(res);
+    setTrending(data);
+    setArticles(res);
   };
   return (
     <div className="w-[1200px] flex flex-col m-auto justify-center  gap-10 ">
@@ -31,24 +46,27 @@ export default function Home({ data, trending }) {
           return <Card data={news} key={i} />;
         })}
       </div>
-      <button onClick={loadMoreHandler} className="border p-2 rounded-md w-fit self-center">
+      <button
+        onClick={loadMoreHandler}
+        className="border p-2 rounded-md w-fit self-center"
+      >
         Load More
       </button>
     </div>
   );
 }
-export async function getServerSideProps(context) {
-  console.log(context);
-  const trending = await fetch(
-    "https://dev.to/api/articles?top=1&per_page=4"
-  ).then((response) => response.json());
-  const data = await fetch("https://dev.to/api/articles?per_page=9").then(
-    (response) => response.json()
-  );
-  return {
-    props: {
-      data,
-      trending,
-    },
-  };
-}
+// export async function getServerSideProps(context) {
+//   console.log(context);
+//   const trending = await fetch(
+//     "https://dev.to/api/articles?  "
+//   ).then((response) => response.json());
+//   const data = await fetch("https://dev.to/api/articles?per_page=9").then(
+//     (response) => response.json()
+//   );
+//   return {
+//     props: {
+//       data,
+//       trending,
+//     },
+//   };
+// }
