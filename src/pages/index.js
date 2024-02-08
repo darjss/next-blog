@@ -1,31 +1,16 @@
 import Card from "../components/Card";
 import TrendingCard from "../components/TrendingCard";
 import Hlcard from "../components/Hlcard";
-import { useState, useEffect } from "react";
-export default function Home() {
-  const [articles, setArticles] = useState([]);
+import { useState} from "react";
+export default function Home({data, trending}) {
+  const [articles, setArticles] = useState(data);
   const [pageNum, setPageNum] = useState(4);
-  const [trending, setTrending] = useState([]);
   const loadMoreHandler = async () => {
     const response = await fetch(
       `https://dev.to/api/articles?per_page=3&page=${pageNum}`
     ).then((response) => response.json());
     setPageNum(pageNum + 1);
     setArticles([...articles, ...response]);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const res = await fetch("http://localhost:4000/api/blog").then((response) =>
-      response.json()
-    );
-    const data = await fetch("http://localhost:4000/api/trending").then(
-      (response) => response.json()
-    );
-    console.log(res);
-    setTrending(data);
-    setArticles(res);
   };
   return (
     <div className="w-[1200px] flex flex-col m-auto justify-center  gap-10 ">
@@ -55,18 +40,18 @@ export default function Home() {
     </div>
   );
 }
-// export async function getServerSideProps(context) {
-//   console.log(context);
-//   const trending = await fetch(
-//     "https://dev.to/api/articles?  "
-//   ).then((response) => response.json());
-//   const data = await fetch("https://dev.to/api/articles?per_page=9").then(
-//     (response) => response.json()
-//   );
-//   return {
-//     props: {
-//       data,
-//       trending,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  console.log(context);
+  const trending = await fetch("http://localhost:4000/api/trending").then(
+    (response) => response.json()
+  );
+  const data = await fetch("http://localhost:4000/api/blog").then((response) =>
+    response.json()
+  );
+  return {
+    props: {
+      data,
+      trending,
+    },
+  };
+}

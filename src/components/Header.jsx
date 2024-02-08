@@ -9,15 +9,15 @@ const Header = () => {
         <Logo />
       </Link>
 
-      <ul className="flex gap-5">
+      <ul className="flex gap-6">
         <Link href="./">
           <li>Home</li>
         </Link>
 
-        <Link href="../blog">
+        <Link href="/blog">
           <li>Blog</li>
         </Link>
-        <Link href="../contact">
+        <Link href="/contact">
           <li>Contact</li>
         </Link>
       </ul>

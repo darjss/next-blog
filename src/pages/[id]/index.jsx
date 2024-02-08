@@ -1,7 +1,7 @@
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-const Page = ({news}) => {
+const Page = ({ news }) => {
   // const [news, setNews] = useState([]);
   // useEffect(() => {
   //   getData();
@@ -17,10 +17,14 @@ const Page = ({news}) => {
   // };
   return (
     <div className="w-[1200px] m-auto">
-      <p>{news.title}</p>
+      <p className="text-gray-900 text-4xl font-semibold">{news.title}</p>
       <div className="flex">
-        <img src={news.user.profile_image_90} alt="" />
-        <p>{news.user.name}</p>
+        <img
+          className="w-7 h-7 rounded-[28px]"
+          src={news.user.profile_image_90}
+          alt=""
+        />
+        <p className="text-zinc-500 text-sm font-medium">{news.user.name}</p>
       </div>
       <img src={news.social_image} alt="" />
       <p>{parse(news.body_html)}</p>

@@ -1,19 +1,10 @@
 import { useSearch } from "@/context/SearchContext";
 import Card from "@/components/Card";
-import { useState, useEffect } from "react";
-const Search = () => {
-  const [data, setData] = useState([]);
+import { useState } from "react";
+const Search = ({ data }) => {
+  // const [data, setData] = useState([]);
   const { searchValue, setSearchValue } = useSearch();
-  useEffect(() => {
-    getData();
-  }, []);
-  const getData = async () => {
-    const res = await fetch("http://localhost:4000/api/search").then(
-      (response) => response.json()
-    );
-    console.log(res);
-    setData(res);
-  };
+
   const results = data.filter((el) => {
     let title = el.title;
     return title.includes(searchValue);
@@ -30,14 +21,14 @@ const Search = () => {
   );
 };
 
-// export async function getServerSideProps(context) {
-//   const data = await fetch("https://dev.to/api/articles?per_page=999").then(
-//     (response) => response.json()
-//   );
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const data = await fetch("http://localhost:4000/api/search").then(
+    (response) => response.json()
+  );
+  return {
+    props: {
+      data,
+    },
+  };
+}
 export default Search;

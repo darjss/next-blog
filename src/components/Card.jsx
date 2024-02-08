@@ -1,6 +1,6 @@
 import Link from "next/link";
 const Card = (props) => {
-  console.log(props);
+
   let data = props.data;
   // console.log(data);
   let date =data.published_at;

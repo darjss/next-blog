@@ -1,7 +1,7 @@
 const { default: Link } = require("next/link");
 
 const NavBar = () => {
-  const listArr = [
+  const titles = [
     "All",
     "Design",
     "Travel",
@@ -11,15 +11,17 @@ const NavBar = () => {
   ];
   return (
     <div>
-      <ul className="flex gap-5">
-        {listArr.map((a) => {
+      <div className="flex gap-5">
+        {titles.map((a) => {
           return (
-            <Link href={`/blog/${a}`}>
-              <li>{a}</li>
+            <Link href={`../blog/${a}`}>
+              <button className="btn btn-active btn-neutral bg-white text-black">
+                {a}
+              </button>
             </Link>
           );
         })}
-      </ul>
+      </div>
     </div>
   );
 };
